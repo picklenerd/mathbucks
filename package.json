@@ -1,0 +1,19 @@
+{
+  "name": "mathbucks",
+  "version": "1.0.0",
+  "description": "Do math, earn money",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "author": "Jordan Grace",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12"
+  }
+}
