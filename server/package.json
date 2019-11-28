@@ -1,5 +1,5 @@
 {
-  "name": "mathbucks",
+  "name": "mathbucks_server",
   "version": "1.0.0",
   "description": "Do math, earn money",
   "main": "index.js",
