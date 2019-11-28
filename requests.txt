@@ -1,0 +1,29 @@
+## Get tasks
+
+GET  http://localhost:3000/tasks
+
+## Post task
+
+POST http://localhost:3000/tasks
+content-type: application/json
+
+{
+    "name": "Sleep"
+}
+
+## Get single task
+
+GET  http://localhost:3000/tasks/5ddf3ef4b36bc50160e84b65
+
+## Update task
+
+PUT  http://localhost:3000/tasks/5ddf3ef4b36bc50160e84b65
+content-type: application/json
+
+{
+    "status": "ongoing"
+}
+
+## Delete task
+
+DELETE http://localhost:3000/tasks/0

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-    var todoList = require('../controllers/mathbucksController');
+    const todoList = require('../controllers/mathbucksController');
     
     app.route('/tasks')
         .get(todoList.list_all_tasks)
@@ -9,6 +9,6 @@ module.exports = function(app) {
 
     app.route('/tasks/:taskId')
         .get(todoList.read_a_task)
-        .post(todoList.update_a_task)
+        .put(todoList.update_a_task)
         .delete(todoList.delete_a_task);
 };
