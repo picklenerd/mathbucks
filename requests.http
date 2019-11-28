@@ -1,29 +1,32 @@
-## Get tasks
-
+# @name getAllTasks
 GET  http://localhost:3000/tasks
 
-## Post task
+###
 
+# @name postTask
 POST http://localhost:3000/tasks
 content-type: application/json
 
 {
-    "name": "Sleep"
+    "name": "Eat"
 }
 
-## Get single task
+###
 
-GET  http://localhost:3000/tasks/5ddf3ef4b36bc50160e84b65
+# @name getTask
+GET  http://localhost:3000/tasks/{{postTask.response.body.$._id}}
 
-## Update task
+###
 
-PUT  http://localhost:3000/tasks/5ddf3ef4b36bc50160e84b65
+# @name updateTask
+PUT  http://localhost:3000/tasks/{{postTask.response.body.$._id}}
 content-type: application/json
 
 {
     "status": "ongoing"
 }
 
-## Delete task
+###
 
-DELETE http://localhost:3000/tasks/0
+# @name deleteTask
+DELETE http://localhost:3000/tasks/{{postTask.response.body.$._id}}
