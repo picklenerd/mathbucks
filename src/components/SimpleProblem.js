@@ -22,16 +22,26 @@ export default class SimpleProblem extends React.Component {
   }
   
   render() {
+    let problem;
+    if (this.props.problem) {
+        problem = (
+        <div className="problem">
+            <div className="problem-statement">
+            {this.props.problem.problemStatement}
+            </div>
+            <div className="answer">
+            <input type="number" value={this.state.input} onChange={this.handleChanged}/>
+            <button onClick={this.handleSubmit}>Submit</button>
+            </div>
+        </div>)
+    } else {
+        problem = <div>No problem</div>;
+    }
+
     return (
-      <div className="problem">
-        <div className="problem-statement">
-          {this.props.problem.question}
+        <div>
+            {problem}
         </div>
-        <div className="answer">
-          <input type="number" value={this.state.input} onChange={this.handleChanged}/>
-          <button onClick={this.handleSubmit}>Submit</button>
-        </div>
-      </div>
     );
   }
 }

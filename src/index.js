@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SimpleProblem from './components/SimpleProblem';
+import ProblemList from './components/ProblemList';
 import './index.css';
 
-const problem = {
-    question: "3 + 5",
-    answer: "8",
-};
-
 ReactDOM.render(
-  <SimpleProblem problem={problem}/>,
+  <ProblemList />,
   document.getElementById('root')
 );
