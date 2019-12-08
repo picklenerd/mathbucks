@@ -6,6 +6,9 @@ module.exports = function(app) {
     app.route('/api/problems')
         .get(mathbucks.list_problems);
 
-    app.route('/api/problems/problemId')
+    app.route('/api/problems/:problemId')
         .get(mathbucks.read_problem);
+
+    app.route('/api/solution/:problemId/:solution')
+        .get(mathbucks.check_solution);
 };

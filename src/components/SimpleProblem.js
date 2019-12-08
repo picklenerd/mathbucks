@@ -1,10 +1,15 @@
 import React from 'react';
 
+const ENTER_ANSWER = 'Please enter a solution and press Submit';
+const CORRECT = 'Correct!';
+const INCORRECT = 'Incorrect :(';
+
 export default class SimpleProblem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: 0,
+      input: "",
+      solutionStatus: ENTER_ANSWER,
     };
 
     this.handleChanged = this.handleChanged.bind(this);
@@ -17,8 +22,10 @@ export default class SimpleProblem extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    console.log(this.state.input);
+  async handleSubmit(event) {
+    this.setState({ solutionStatus: ''});
+    const isCorrect = await this.props.submitSolution(this.state.input)
+    this.setState({ solutionStatus: isCorrect ? CORRECT : INCORRECT });
   }
   
   render() {
@@ -27,11 +34,12 @@ export default class SimpleProblem extends React.Component {
         problem = (
         <div className="problem">
             <div className="problem-statement">
-            {this.props.problem.problemStatement}
+                {this.props.problem.problemStatement}
             </div>
             <div className="answer">
-            <input type="number" value={this.state.input} onChange={this.handleChanged}/>
-            <button onClick={this.handleSubmit}>Submit</button>
+                <input type="text" value={this.state.input} onChange={this.handleChanged}/>
+                <button onClick={this.handleSubmit}>Submit</button>
+                <p>{this.state.solutionStatus}</p>
             </div>
         </div>)
     } else {

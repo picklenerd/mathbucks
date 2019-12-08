@@ -7,6 +7,8 @@ export default class ProblemList extends React.Component {
         this.state = {
             problems: [],
         };
+
+        this.submitSolution = this.submitSolution.bind(this);
     }
 
     async componentDidMount() {
@@ -15,8 +17,18 @@ export default class ProblemList extends React.Component {
         this.setState({problems: json});
     }
 
+    async submitSolution(id, solution) {
+        const response = await fetch(`http://localhost:3001/api/solution/${id}/${solution}`);
+        const json = await response.json();
+        return json.isCorrect;
+    }
+
     render() {
-        const problems = this.state.problems.map(problem => <li><SimpleProblem problem={problem} /></li>);
+        const problems = this.state.problems.map(problem => (
+            <li key={problem._id} >
+                <SimpleProblem problem={problem} submitSolution={(solution) => this.submitSolution(problem._id, solution)}/>
+            </li>
+        ));
 
         return (
             <ul>{problems}</ul>
